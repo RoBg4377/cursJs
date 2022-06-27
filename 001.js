@@ -69,19 +69,87 @@ console.log(Perro.prototype.isPrototypeOf(bulldog))
 console.log(Perro.prototype.isPrototypeOf(dogo))
 
 function Animal(){
-  sin propiedades (solo prototype)
+  //sin propiedades (solo prototype)
 }
 Animal.prototype = {
   constructor: Animal, // par referir constructor a animal
   comer: function() { return 'ñam ñam'}
 }
 
-let Gato = Object.create(Animal.prototype);
+function Perro (nombre, color){
+  let nom = nombre; // se hace privada la propiedad
+  this.color= color;
+  this.suNombre = function () {// closure
+    return nom
+  }
+}
 
-console.log(Gato.comer())
+
+Perro.prototype = Object.create(Animal.prototype);
+Perro.prototype.patas = 4
+Perro.prototype.ladrar = function () {return 'guau guau'},
+Perro.prototype.chapa = function () { return 'el perro se llama: ' + this.nombre + '.'}
+Perro.prototype.constructor = Perro
+
+let caniche = new Perro('Lalo', 'café')
 
 
 
+console.log(caniche.comer())
+
+Perro.prototype.comer = function() { return 'rico rico'}
+
+
+let dueñoMixin = function(obj) {
+  obj.dueño = function() {
+    return 'Ricardo'
+  }
+}
+
+let dueñaMixin = function(obj) {
+  obj.dueña = function() {
+    return 'Martina'
+  }
+}
+
+let dueñosModule = (function(){
+  return {
+    dueñoMixin: function(obj) {
+      obj.dueño = function() {
+        return 'Ricardo'
+      };
+    },
+    dueñaMixin: function(obj) {
+      obj.dueña = function() {
+        return 'Martina'
+      };
+    }
+  }
+})()
+
+dueñosModule.dueñoMixin(caniche);
+dueñosModule.dueñaMixin(caniche);
+
+console.log(caniche.dueño());
+console.log(caniche.dueña())
+
+
+ console.log(caniche)
+
+dueñoMixin(caniche)
+console.log(caniche.dueño())
+
+console.log(caniche.suNombre())
+
+console.log(caniche.color)
+console.log(caniche.patas)
+console.log(caniche.comer())
+console.log(caniche.ladrar())
+console.log(caniche.chapa())
+
+ console.log(caniche.nombre)
+ caniche.nombre = 'Ernesto';
+ console.log(caniche.nombre)
 
 
 
