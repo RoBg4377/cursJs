@@ -1,68 +1,67 @@
-// // const TeVerde = () => 'té verde'
-// // const TeNegro = () => 'té negro'
+const TeVerde = () => 'té verde'
+const TeNegro = () => 'té negro'
 
-// // const TraerTe = (numTazas, tipoT) => {
-// //   const TazasTe = [];
-// //   for(let cups = 1; cups <= numTazas; cups++) {
-// //     const tazaTe = tipoT();
-// //     TazasTe.push(tazaTe);
-// //   }
-// //   return TazasTe
-// // }
-// // const verde = TraerTe(5, TeVerde)
-// // const negro = TraerTe(5, TeNegro)
+const TraerTe = (numTazas, tipoT) => {
+  const TazasTe = [];
+  for(let cups = 1; cups <= numTazas; cups++) {
+    const tazaTe = tipoT();
+    TazasTe.push(tazaTe);
+  }
+  return TazasTe
+}
+const verde = TraerTe(5, TeVerde)
+const negro = TraerTe(5, TeNegro)
 
-// // console.log(verde, negro)
+console.log(verde, negro)
 
-// const Ventana = function (pestañas) {
-//   this.pestañas = pestañas
-// }
-// Ventana.prototype.juntar = function (Ventana2) {
-//   this.pestañas = this.pestañas.concat(Ventana2.pestañas);
-//   return this
-// }
-// Ventana.prototype.abrirP = function (tab) {
-//   this.pestañas.push('new: ' + tab);
-//   return this;
-// }
+const Ventana = function (pestañas) {
+  this.pestañas = pestañas
+}
+Ventana.prototype.juntar = function (Ventana2) {
+  this.pestañas = this.pestañas.concat(Ventana2.pestañas);
+  return this
+}
+Ventana.prototype.abrirP = function (tab) {
+  this.pestañas.push('new: ' + tab);
+  return this;
+}
 
-// Ventana.prototype.cerrarP = function (index) {
+Ventana.prototype.cerrarP = function (index) {
 
-// }
-
-
+}
 
 
-// const trabajo = new Ventana(['GMail', 'Inbox', 'Work mail', 'Docs', 'freeCodeCamp']);
-// const redes = new Ventana(['FB', 'Gitter', 'Reddit', 'Twitter', 'Medium']);
-
-// // console.log(trabajo)
-// console.log(trabajo.abrirP('pornohub'))
-// // console.log(trabajo.abrirP('xvideos'))
 
 
-// function add(lista, bookName) {
-//   let lista2 = [...lista]
-//   lista2.push(bookName);
-//   return lista2
-// }
+const trabajo = new Ventana(['GMail', 'Inbox', 'Work mail', 'Docs', 'freeCodeCamp']);
+const redes = new Ventana(['FB', 'Gitter', 'Reddit', 'Twitter', 'Medium']);
 
-// function remove(lista, bookName) {
-//   const book_index = lista.indexOf(bookName);
-//   if (book_index >= 0) {
-//     let lista2 = [...lista];
-//     lista2.splice(book_index, 1);
-//     return lista2;
+console.log(trabajo)
+console.log(trabajo.abrirP('pornohub'))
+console.log(trabajo.abrirP('xvideos'))
 
-//     }
-// }
-// console.log(add(bookList, 5))
-// con
 
-// let lista = [1, 2, 3, 4, 5]
+function add(lista, bookName) {
+  let lista2 = [...lista];
+  lista2.push(bookName);
+  return lista2;
+}
 
-// let result = lista.map( n => n *2)
-//  console.log(result)
+function remove(lista, bookName) {
+  const book_index = lista.indexOf(bookName);
+  if (book_index >= 0) {
+    let lista2 = [...lista];
+    lista2.splice(book_index, 1);
+    return lista2;
+  }
+}
+console.log(add(bookList, 5));
+con;
+
+let lista = [1, 2, 3, 4, 5];
+
+let result = lista.map((n) => n * 2);
+console.log(result);
 const watchList = [
   {
     "Title": "Inception",
@@ -176,17 +175,46 @@ const watchList = [
   }
 ];
 
+console.log(ratings)
 
-const ratings=
-  Title: watchList.map((peli) => peli.Title)
+for (let i = 0; i < watchList.length; i++) {
 
+}
+const ratings = [];
+watchList.map((n) => ratings.push({ Title: n.Title, Rating: n.imdbRating }));
+const filteredList = ratings.filter((peli) => parseInt(peli.Rating) >= 8);
 
+ const usersUnder30 = users.filter(user => user.age < 30)
+
+console.log(n)
 console.log(ratings)
 
 
-// for (let i = 0; i < watchList.length; i++) {
-//   ratings.push({title: watchList[i]["Title"], rating: watchList[i]["imdbRating"]});
-// }
+const filteredList2 = watchList
+  .filter((movie) => {
+    return parseFloat(movie.imdbRating) >= 8.0;
+  })
+  .map((movie) => {
+    return {
+      title: movie.Title,
+      rating: movie.imdbRating,
+    };
+  });
 
 
-// console.log(JSON.stringify(ratings));
+
+Array.prototype.myFilter = function (callback) {
+  const newArray = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i])) {
+      newArray.push(this[i]);
+    }
+  }
+  return newArray;
+};
+const s = [23, 65, 98, 5];
+const new_s = s.myFilter(function (item) {
+  return item % 2 === 1;
+});
+console.log(new_s);
+
